@@ -175,7 +175,11 @@ button.remove {
   }
 }
 
-.empty-row {
+.d-none {
+  display: none;
+}
+
+#empty-row {
   height: 45rem;
   position: relative;
 }
