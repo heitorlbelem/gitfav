@@ -1,3 +1,4 @@
+import { GithubUser } from "./GithubUser.js"
 class Favorite {
   constructor(root) {
     this.root = document.getElementById(root)
@@ -6,26 +7,38 @@ class Favorite {
   }
 
   load() {
-    this.users = [
-      {
-        login: "heitorlbelem",
-        name: "Heitor Belem",
-        public_repos: 72,
-        followers: 19,
-      },
-      {
-        login: "maykbrito",
-        name: "Mayk Brito",
-        public_repos: 72,
-        followers: 19,
-      },
-    ]
+    this.users = JSON.parse(localStorage.getItem("@gitfav-users:")) || []
+  }
+
+  save() {
+    localStorage.setItem("@gitfav-users:", JSON.stringify(this.users))
+  }
+
+  async add(username) {
+    try {
+      const userExists = this.users.find((user) => user.login === username)
+      if (userExists) {
+        throw new Error("Usuário já está registrado como favorito")
+      }
+
+      const newUser = await GithubUser.search(username)
+      if (newUser.login === undefined) {
+        throw new Error("Usuário não encontrado")
+      }
+
+      this.users = [newUser, ...this.users]
+      this.save()
+      this.update()
+    } catch (error) {
+      alert(error.message)
+    }
   }
 
   delete(username) {
     const filteredUsers = this.users.filter((user) => user.login !== username)
 
     this.users = filteredUsers
+    this.save()
     this.update()
   }
 }
@@ -34,7 +47,9 @@ export class FavoriteView extends Favorite {
   constructor(root) {
     super(root)
     this.tBody = this.root.querySelector("table tbody")
+    this.emptyRow = this.root.querySelector("#empty-row")
     this.update()
+    this.onadd()
   }
 
   update() {
@@ -55,6 +70,17 @@ export class FavoriteView extends Favorite {
 
       this.tBody.append(row)
     })
+  }
+
+  onadd() {
+    const addButton = this.root.querySelector("#add-button")
+
+    addButton.onclick = (e) => {
+      e.preventDefault()
+      const { value } = this.root.querySelector("#search")
+
+      this.add(value)
+    }
   }
 
   createTableRow({ login, name, public_repos, followers }) {
@@ -82,5 +108,29 @@ export class FavoriteView extends Favorite {
     this.tBody.querySelectorAll("tr").forEach((tr) => {
       tr.remove()
     })
+
+    if (this.users.length === 0) {
+      const emptyRow = this.createEmptyRow()
+
+      this.tBody.append(emptyRow)
+    }
+  }
+
+  createEmptyRow() {
+    const row = document.createElement("tr")
+    row.setAttribute("id", "empty-row")
+    row.innerHTML = `
+      <td>
+        <div id="empty-body">
+          <img src="./assets/Estrela.svg" alt="" />
+          <h2>Nenhum favorito ainda</h2>
+        </div>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+    `
+
+    return row
   }
 }
