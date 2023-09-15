@@ -9,6 +9,7 @@
 
 :root {
   font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -80,4 +81,95 @@ form button {
   justify-content: center;
   align-items: center;
   gap: 0.8rem;
+
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    color: #065e7c;
+    background: #fff;
+  }
+}
+
+form button i {
+  font-size: 2rem;
+}
+
+.rounded-table {
+  border-radius: 1.2rem;
+  border: 1px solid #4a808c;
+  margin-top: 8.8rem;
+  overflow: hidden;
+}
+
+table * {
+  font-size: 2rem;
+  color: white;
+  text-align: left;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  background-color: #092d38;
+  padding: 1.6rem 4rem;
+  font-weight: bold;
+}
+
+thead th:first-child {
+  width: 50%;
+}
+
+tbody tr:nth-child(even) {
+  background: #06181c;
+  border-block: 1px solid #4a808c;
+}
+
+tbody tr:nth-child(odd) {
+  background: rgba(6, 22, 27, 0.5);
+}
+
+tbody td {
+  padding: 2.4rem 4rem;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user img {
+  height: 5.6rem;
+  width: 5.6rem;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.user a {
+  text-decoration: none;
+  color: #e1e1e6;
+
+  & > p {
+    font-weight: 700;
+    line-height: 3.2rem;
+  }
+}
+
+button.remove {
+  border: none;
+  background: transparent;
+  color: #f75a68;
+  font-weight: 700;
+  line-height: 3.2rem;
+
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }

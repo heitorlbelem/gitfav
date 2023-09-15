@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GitFav</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
   <body>
     <div id="app">
@@ -20,66 +27,68 @@
             id="search"
           />
           <button>
-            <img src="./assets/star.svg" alt="Icone de estrela" />
+            <i class="ph-bold ph-star"></i>
             Favoritar
           </button>
         </form>
       </header>
 
-      <table>
-        <thead>
-          <tr>
-            <th>User</th>
-            <th>Repositories</th>
-            <th>Followers</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <img src="https://github.com/heitorlbelem.png" alt="" />
-              <a href="https://github.com/heitorlbelem">
-                <p>Heitor Belém</p>
-                <span>/heitorlbelem</span>
-              </a>
-            </td>
-            <td>123</td>
-            <td>1234</td>
-            <td>
-              <button>Remover</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://github.com/heitorlbelem.png" alt="" />
-              <a href="https://github.com/heitorlbelem">
-                <p>Heitor Belém</p>
-                <span>/heitorlbelem</span>
-              </a>
-            </td>
-            <td>123</td>
-            <td>1234</td>
-            <td>
-              <button>Remover</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://github.com/heitorlbelem.png" alt="" />
-              <a href="https://github.com/heitorlbelem">
-                <p>Heitor Belém</p>
-                <span>/heitorlbelem</span>
-              </a>
-            </td>
-            <td>123</td>
-            <td>1234</td>
-            <td>
-              <button>Remover</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="rounded-table">
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Repositories</th>
+              <th>Followers</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="user">
+                <img src="https://github.com/heitorlbelem.png" alt="" />
+                <a href="https://github.com/heitorlbelem">
+                  <p>Heitor Belém</p>
+                  <span>/heitorlbelem</span>
+                </a>
+              </td>
+              <td>123</td>
+              <td>1234</td>
+              <td>
+                <button class="remove">Remover</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="user">
+                <img src="https://github.com/heitorlbelem.png" alt="" />
+                <a href="https://github.com/heitorlbelem">
+                  <p>Heitor Belém</p>
+                  <span>/heitorlbelem</span>
+                </a>
+              </td>
+              <td>123</td>
+              <td>1234</td>
+              <td>
+                <button class="remove">Remover</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="user">
+                <img src="https://github.com/heitorlbelem.png" alt="" />
+                <a href="https://github.com/heitorlbelem">
+                  <p>Heitor Belém</p>
+                  <span>/heitorlbelem</span>
+                </a>
+              </td>
+              <td>123</td>
+              <td>1234</td>
+              <td>
+                <button class="remove">Remover</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </body>
 </html>
